@@ -108,7 +108,7 @@ func CleanUp(fs afero.Fs, cfg Config) ([]string, error) {
 		deletedFiles = append(deletedFiles, path)
 
 		// SAP JVM also creates .addon files that should be removed as well
-		addonPath := path[0:len(path)-len(".hprof")] + ".addon"
+		addonPath := path[0:len(path)-len(".hprof")] + ".addons"
 		addonFile, err := fs.Stat(addonPath)
 		if !os.IsNotExist(err) && addonFile.Mode().isRegular() {
 			var err = fs.Remove(addonPath)
